@@ -12,7 +12,6 @@ headers = "0.3.8"
 tokio = { version = "1.29.1", features = ["rt-multi-thread", "macros", "signal"] }
 tokio-stream = "0.1.14"
 futures = "0.3"
-tower-http = { version = "0.4.3", features = ["cors"] }
 rust-embed = { version = "6.8.1", features = ["axum"] }
 mime_guess = "2.0.4"
 

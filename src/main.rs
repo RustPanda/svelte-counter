@@ -12,7 +12,7 @@ use futures::stream::{self, Stream};
 use rust_embed::RustEmbed;
 use std::time::Duration;
 use tokio_stream::StreamExt as _;
-use tower_http::cors::CorsLayer;
+
 
 static INDEX_HTML: &str = "index.html";
 
@@ -22,12 +22,9 @@ struct Assets;
 
 #[tokio::main]
 async fn main() {
-    let cors = CorsLayer::permissive();
-
     let app = Router::new()
         .route("/sse", get(sse_handler))
-        .fallback(static_handler)
-        .layer(cors);
+        .fallback(static_handler);
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
         .await
